@@ -8,8 +8,8 @@
                 <a href="#">
 					<h3>{{ post['author'] }}</h3>
 				</a>
-                <div class="email">Email: <a href="mailto:{{ post['email'] }}">{{ post['email'] }}</a></div>
-                <div class="date">Date: <span class="badge badge-primary">{{ post['date'] }}</span></div>
+                <div class="email"><a href="mailto:{{ post['email'] }}">{{ post['email'] }}</a></div>
+                <div class="date"><span class="badge badge-primary">{{ post['date'] }}</span></div>
                 <div class="commit">Commit SHA: <code>{{ post['sha'] }}</code></div>
                 <div class="file">File Path: <strong>{{ post['file_path'] }}</strong></div>
                 <div class="line">Line Number: <strong>{{ post['line'] }}</strong></div>
