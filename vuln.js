@@ -28,3 +28,18 @@ app.post('/login', function (req, res) {
         res.send('Invalid username or password');
     }
 });
+
+app.post('/search', function (req, res) {
+    var searchQuery = req.body.query;
+    // Vulnerability
+    var regex = new RegExp(searchQuery);
+ 
+    // Simulated data  
+    var data = ['John', 'Jane', 'Doe', 'Smith', 'Admin'];
+ 
+    var results = data.filter(function (item) {
+        return regex.test(item);
+    });
+ 
+    res.send(results);
+});
