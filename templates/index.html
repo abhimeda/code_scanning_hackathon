@@ -5,15 +5,15 @@
     <div class="container">
         {% for post in posts %}
             <div class="post">
-                <a href="#">
-					<h3>{{ post['author'] }}</h3>
-				</a>
+                <h3>{{ post['author'] }}</h3>
                 <div class="email"><a href="mailto:{{ post['email'] }}">{{ post['email'] }}</a></div>
                 <div class="date"><span class="badge badge-primary">{{ post['date'] }}</span></div>
                 <div class="commit">Commit SHA: <code>{{ post['sha'] }}</code></div>
                 <div class="file">File Path: <strong>{{ post['file_path'] }}</strong></div>
                 <div class="line">Line Number: <strong>{{ post['line'] }}</strong></div>
                 <p class="message">{{ post['message'] }}</p>
+                <button class="preview-btn" onclick="togglePreview(this)">Show Preview</button>
+                <pre class="code-preview" style="display:none;">{{ post['preview'] | join('\n') }}</pre>
                 <hr>
             </div>
         {% endfor %}

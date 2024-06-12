@@ -51,3 +51,27 @@ h1 {
 hr {
     border-top: 1px solid #ccc;
 }
+
+/* Style for the 'Show Preview' button */
+.post .preview-btn {
+    background-color: #007bff !important;  /* Blue background */
+    color: rgb(255, 255, 255) !important;               /* White text */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;                       /* Ensures visibility and legibility */
+}
+
+/* Style for the code preview area */
+.post .code-preview {
+    background-color: #f4f4f4 !important;  /* Light gray background */
+    border: 1px solid #ccc !important;     /* Subtle border */
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace; /* Ensures code-like font */
+    margin-top: 10px;
+    display: none;                         /* Initially hidden */
+}
