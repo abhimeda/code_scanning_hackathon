@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to Code Scanning Detective! {% endblock %}</h1>
+    <h1>{% block title %}Welcome to Code Scanning Detective{% endblock %}</h1>
+    {% for post in posts %}
+        <div class="post">
+            <a href="#">
+                <h2>{{ post['author'] }}</h2>
+            </a>
+            <span class="badge badge-primary">{{ post['date'] }}</span>
+            <p>Lines: {{ post['lines'] }}</p>
+            <p>Suggestions: {{ post['suggestions'] }}</p>
+            <hr>
+        </div>
+    {% endfor %}
 {% endblock %}
