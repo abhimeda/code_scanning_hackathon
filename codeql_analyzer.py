@@ -30,7 +30,7 @@ def parse_sarif_file() -> None:
 
     data = sarif_data["runs"][0]
     results = data["results"]
-    print(len(results))
+    # print(len(results))
     # Check if results exist and is not empty
     if results:
         with open("output.json", "w") as f:
@@ -43,10 +43,10 @@ def analyze_json_results():
     ls_locations = []
     with open("output.json", "r") as f:
         results = json.load(f)
-    print(len(results))
+    # print(len(results))
     for result in results:
         # Access dictionary elements
-        print(result)
+        # print(result)
         vulnerability = result["message"]["text"]
         locations = result["locations"]
         for location in locations:
@@ -74,16 +74,17 @@ def get_code_at_line(file_path: str, line_number: int) -> str:
     return ""
 
 
-def search_git_history(keyword: str) -> dict[str, str] | str:
+def search_git_history(file_path:str, keyword: str) -> dict[str, str] | str:
     """Searches the git history for a specific keyword using the 'git log -S' command.
     :param keyword: The keyword to search for.
     :return: The output of the git log command.
     """
-    result = subprocess.run(["git", "log", "-S", keyword], capture_output=True, text=True)
+    result = subprocess.run(["git", "log", "-S", keyword, "--", file_path], capture_output=True, text=True)
     if result.returncode == 0:
         # Extract the sha, author, and time from the git log output
         git_log_output = result.stdout
         lines = git_log_output.split("\n")
+        print(lines)
         x = []
         for line in lines:
             if line.startswith("commit"):
@@ -97,7 +98,6 @@ def search_git_history(keyword: str) -> dict[str, str] | str:
             elif line.startswith("Date"):
                 date = line.split(":")[1].strip()
                 x.append(date)
-
         return {"sha": x[0], "author": x[1], "email": x[2], "date": x[3]}
 
     else:
@@ -114,7 +114,8 @@ if __name__ == "__main__":
     vulnerable_locations = analyze_json_results()
     for location in vulnerable_locations:
         code_snippet = get_code_at_line(location["file_path"], location["line"])
-        author = search_git_history(code_snippet)
+        print(code_snippet)
+        author = search_git_history(location["file_path"], code_snippet)
         author["file_path"] = location["file_path"]
         author["line"] = location["line"]
         author["message"] = location["message"]
