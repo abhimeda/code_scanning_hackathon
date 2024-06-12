@@ -103,5 +103,6 @@ if __name__ == "__main__":
         author["line"] = location["line"]
         author["message"] = location["message"]
         authors.append(author)
-    print(authors)
+    with open("authors.json", "w") as f:
+        json.dump(authors, f, indent=4)
 
