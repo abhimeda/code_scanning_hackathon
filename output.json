@@ -13,20 +13,20 @@
             {
                 "physicalLocation": {
                     "artifactLocation": {
-                        "uri": "vulnerability.js",
+                        "uri": "vuln.js",
                         "uriBaseId": "%SRCROOT%",
                         "index": 0
                     },
                     "region": {
-                        "startLine": 19,
+                        "startLine": 23,
                         "startColumn": 17,
-                        "endColumn": 82
+                        "endColumn": 47
                     }
                 }
             }
         ],
         "partialFingerprints": {
-            "primaryLocationLineHash": "d6704489bbb6e6d5:1",
+            "primaryLocationLineHash": "7734a9101247af72:1",
             "primaryLocationStartColumnFingerprint": "12"
         },
         "codeFlows": [
@@ -38,14 +38,33 @@
                                 "location": {
                                     "physicalLocation": {
                                         "artifactLocation": {
-                                            "uri": "vulnerability.js",
+                                            "uri": "vuln.js",
                                             "uriBaseId": "%SRCROOT%",
                                             "index": 0
                                         },
                                         "region": {
-                                            "startLine": 19,
-                                            "startColumn": 72,
-                                            "endColumn": 80
+                                            "startLine": 20,
+                                            "startColumn": 20,
+                                            "endColumn": 37
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "req.body.password"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 20,
+                                            "startColumn": 9,
+                                            "endColumn": 37
                                         }
                                     },
                                     "message": {
@@ -57,18 +76,37 @@
                                 "location": {
                                     "physicalLocation": {
                                         "artifactLocation": {
-                                            "uri": "vulnerability.js",
+                                            "uri": "vuln.js",
                                             "uriBaseId": "%SRCROOT%",
                                             "index": 0
                                         },
                                         "region": {
-                                            "startLine": 19,
-                                            "startColumn": 17,
-                                            "endColumn": 82
+                                            "startLine": 23,
+                                            "startColumn": 37,
+                                            "endColumn": 45
                                         }
                                     },
                                     "message": {
-                                        "text": "`Loggin ... sword}`"
+                                        "text": "password"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 23,
+                                            "startColumn": 17,
+                                            "endColumn": 47
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "`U:${us ... sword}`"
                                     }
                                 }
                             }
@@ -84,75 +122,37 @@
                                 "location": {
                                     "physicalLocation": {
                                         "artifactLocation": {
-                                            "uri": "vulnerability.js",
+                                            "uri": "vuln.js",
                                             "uriBaseId": "%SRCROOT%",
                                             "index": 0
                                         },
                                         "region": {
-                                            "startLine": 36,
+                                            "startLine": 23,
+                                            "startColumn": 37,
+                                            "endColumn": 45
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "password"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 23,
                                             "startColumn": 17,
-                                            "endColumn": 25
+                                            "endColumn": 47
                                         }
                                     },
                                     "message": {
-                                        "text": "password"
-                                    }
-                                }
-                            },
-                            {
-                                "location": {
-                                    "physicalLocation": {
-                                        "artifactLocation": {
-                                            "uri": "vulnerability.js",
-                                            "uriBaseId": "%SRCROOT%",
-                                            "index": 0
-                                        },
-                                        "region": {
-                                            "startLine": 17,
-                                            "startColumn": 26,
-                                            "endColumn": 34
-                                        }
-                                    },
-                                    "message": {
-                                        "text": "password"
-                                    }
-                                }
-                            },
-                            {
-                                "location": {
-                                    "physicalLocation": {
-                                        "artifactLocation": {
-                                            "uri": "vulnerability.js",
-                                            "uriBaseId": "%SRCROOT%",
-                                            "index": 0
-                                        },
-                                        "region": {
-                                            "startLine": 19,
-                                            "startColumn": 72,
-                                            "endColumn": 80
-                                        }
-                                    },
-                                    "message": {
-                                        "text": "password"
-                                    }
-                                }
-                            },
-                            {
-                                "location": {
-                                    "physicalLocation": {
-                                        "artifactLocation": {
-                                            "uri": "vulnerability.js",
-                                            "uriBaseId": "%SRCROOT%",
-                                            "index": 0
-                                        },
-                                        "region": {
-                                            "startLine": 19,
-                                            "startColumn": 17,
-                                            "endColumn": 82
-                                        }
-                                    },
-                                    "message": {
-                                        "text": "`Loggin ... sword}`"
+                                        "text": "`U:${us ... sword}`"
                                     }
                                 }
                             }
@@ -166,14 +166,14 @@
                 "id": 1,
                 "physicalLocation": {
                     "artifactLocation": {
-                        "uri": "vulnerability.js",
+                        "uri": "vuln.js",
                         "uriBaseId": "%SRCROOT%",
                         "index": 0
                     },
                     "region": {
-                        "startLine": 19,
-                        "startColumn": 72,
-                        "endColumn": 80
+                        "startLine": 20,
+                        "startColumn": 20,
+                        "endColumn": 37
                     }
                 },
                 "message": {
@@ -184,18 +184,207 @@
                 "id": 2,
                 "physicalLocation": {
                     "artifactLocation": {
-                        "uri": "vulnerability.js",
+                        "uri": "vuln.js",
                         "uriBaseId": "%SRCROOT%",
                         "index": 0
                     },
                     "region": {
-                        "startLine": 36,
-                        "startColumn": 17,
-                        "endColumn": 25
+                        "startLine": 23,
+                        "startColumn": 37,
+                        "endColumn": 45
                     }
                 },
                 "message": {
                     "text": "an access to password"
+                }
+            }
+        ]
+    },
+    {
+        "ruleId": "js/regex-injection",
+        "ruleIndex": 67,
+        "rule": {
+            "id": "js/regex-injection",
+            "index": 67
+        },
+        "message": {
+            "text": "This regular expression is constructed from a [user-provided value](1)."
+        },
+        "locations": [
+            {
+                "physicalLocation": {
+                    "artifactLocation": {
+                        "uri": "vuln.js",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 0
+                    },
+                    "region": {
+                        "startLine": 35,
+                        "startColumn": 28,
+                        "endColumn": 39
+                    }
+                }
+            }
+        ],
+        "partialFingerprints": {
+            "primaryLocationLineHash": "5a44b81594161443:1",
+            "primaryLocationStartColumnFingerprint": "23"
+        },
+        "codeFlows": [
+            {
+                "threadFlows": [
+                    {
+                        "locations": [
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 33,
+                                            "startColumn": 23,
+                                            "endColumn": 31
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "req.body"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 33,
+                                            "startColumn": 23,
+                                            "endColumn": 37
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "req.body.query"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 33,
+                                            "startColumn": 9,
+                                            "endColumn": 37
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "searchQuery"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 35,
+                                            "startColumn": 28,
+                                            "endColumn": 39
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "searchQuery"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "relatedLocations": [
+            {
+                "id": 1,
+                "physicalLocation": {
+                    "artifactLocation": {
+                        "uri": "vuln.js",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 0
+                    },
+                    "region": {
+                        "startLine": 33,
+                        "startColumn": 23,
+                        "endColumn": 31
+                    }
+                },
+                "message": {
+                    "text": "user-provided value"
+                }
+            }
+        ]
+    },
+    {
+        "ruleId": "js/missing-rate-limiting",
+        "ruleIndex": 70,
+        "rule": {
+            "id": "js/missing-rate-limiting",
+            "index": 70
+        },
+        "message": {
+            "text": "This route handler performs [a file system access](1), but is not rate-limited."
+        },
+        "locations": [
+            {
+                "physicalLocation": {
+                    "artifactLocation": {
+                        "uri": "vuln.js",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 0
+                    },
+                    "region": {
+                        "startLine": 9,
+                        "startColumn": 14,
+                        "endLine": 12,
+                        "endColumn": 2
+                    }
+                }
+            }
+        ],
+        "partialFingerprints": {
+            "primaryLocationLineHash": "c8e7ec25fd5ac5ce:1",
+            "primaryLocationStartColumnFingerprint": "13"
+        },
+        "relatedLocations": [
+            {
+                "id": 1,
+                "physicalLocation": {
+                    "artifactLocation": {
+                        "uri": "vuln.js",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 0
+                    },
+                    "region": {
+                        "startLine": 11,
+                        "startColumn": 5,
+                        "endColumn": 44
+                    }
+                },
+                "message": {
+                    "text": "a file system access"
                 }
             }
         ]

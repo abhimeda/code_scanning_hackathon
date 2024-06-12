@@ -1,5 +1,7 @@
 import json
 import subprocess
+from typing import Dict
+
 
 def analyze_codeql_db(database_name: str) -> None:
     """Runs the CodeQL analyzer on behalf of the user and retrieves the outputted
@@ -8,12 +10,15 @@ def analyze_codeql_db(database_name: str) -> None:
     :return:
     """
     # Run the CodeQL command to analyze the repository
-    result = subprocess.run(["codeql", "database", "analyze", database_name, "--format=sarif-latest", "--output=results.sarif"], capture_output=True, text=True)
+    result = subprocess.run(
+        ["codeql", "database", "analyze", database_name, "--format=sarif-latest", "--output=results.sarif"],
+        capture_output=True, text=True)
     if result.returncode == 0:
         print("CodeQL analysis completed successfully.")
     else:
         print("CodeQL analysis failed. Error message:")
         print(result.stderr)
+
 
 #  Written by Copilot
 def parse_sarif_file() -> None:
@@ -22,10 +27,10 @@ def parse_sarif_file() -> None:
     """
     with open("results.sarif") as f:
         sarif_data = json.load(f)
-    
+
     data = sarif_data["runs"][0]
     results = data["results"]
-
+    print(len(results))
     # Check if results exist and is not empty
     if results:
         with open("output.json", "w") as f:
@@ -33,12 +38,15 @@ def parse_sarif_file() -> None:
     else:
         print("No vulnerabilities found in SARIF file.")
 
+
 def analyze_json_results():
     ls_locations = []
-    with open("output.json") as f:
+    with open("output.json", "r") as f:
         results = json.load(f)
+    print(len(results))
     for result in results:
         # Access dictionary elements
+        print(result)
         vulnerability = result["message"]["text"]
         locations = result["locations"]
         for location in locations:
@@ -46,8 +54,8 @@ def analyze_json_results():
             file_path = location["physicalLocation"]["artifactLocation"]["uri"]
             line = location["physicalLocation"]["region"]["startLine"]
             ls_locations.append({"file_path": file_path, "line": line, "message": vulnerability})
-            return ls_locations
-           
+    return ls_locations
+
 
 def get_code_at_line(file_path: str, line_number: int) -> str:
     """Reads the file and retrieves the code at a specific line number.
@@ -62,34 +70,42 @@ def get_code_at_line(file_path: str, line_number: int) -> str:
             return code
         else:
             print("Line number exceeds the total number of lines in the file.")
-    
+
     return ""
-def search_git_history(keyword: str) -> str:
+
+
+def search_git_history(keyword: str) -> dict[str, str] | str:
     """Searches the git history for a specific keyword using the 'git log -S' command.
     :param keyword: The keyword to search for.
     :return: The output of the git log command.
     """
     result = subprocess.run(["git", "log", "-S", keyword], capture_output=True, text=True)
     if result.returncode == 0:
-         # Extract the sha, author, and time from the git log output
+        # Extract the sha, author, and time from the git log output
         git_log_output = result.stdout
         lines = git_log_output.split("\n")
+        x = []
         for line in lines:
             if line.startswith("commit"):
                 sha = line.split()[1]
+                x.append(sha)
             elif line.startswith("Author"):
                 author = line.split(":")[1].split(" <")[0].strip()
                 email = line.split("<")[1].split(">")[0].strip()
+                x.append(author)
+                x.append(email)
             elif line.startswith("Date"):
                 date = line.split(":")[1].strip()
-        return {"sha": sha, "author": author, "email":email, "date": date}
-    
+                x.append(date)
+
+        return {"sha": x[0], "author": x[1], "email": x[2], "date": x[3]}
+
     else:
         print("Failed to search git history. Error message:")
         print(result.stderr)
         return ""
 
-   
+
 if __name__ == "__main__":
 
     authors = []
@@ -105,4 +121,3 @@ if __name__ == "__main__":
         authors.append(author)
     with open("authors.json", "w") as f:
         json.dump(authors, f, indent=4)
-
