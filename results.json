@@ -1,0 +1,203 @@
+[
+     {
+          "ruleId": "js/clear-text-logging",
+          "ruleIndex": 49,
+          "rule": {
+               "id": "js/clear-text-logging",
+               "index": 49
+          },
+          "message": {
+               "text": "This logs sensitive data returned by [an access to password](1) as clear text.\nThis logs sensitive data returned by [an access to password](2) as clear text."
+          },
+          "locations": [
+               {
+                    "physicalLocation": {
+                         "artifactLocation": {
+                              "uri": "vulnerability.js",
+                              "uriBaseId": "%SRCROOT%",
+                              "index": 0
+                         },
+                         "region": {
+                              "startLine": 19,
+                              "startColumn": 17,
+                              "endColumn": 82
+                         }
+                    }
+               }
+          ],
+          "partialFingerprints": {
+               "primaryLocationLineHash": "d6704489bbb6e6d5:1",
+               "primaryLocationStartColumnFingerprint": "12"
+          },
+          "codeFlows": [
+               {
+                    "threadFlows": [
+                         {
+                              "locations": [
+                                   {
+                                        "location": {
+                                             "physicalLocation": {
+                                                  "artifactLocation": {
+                                                       "uri": "vulnerability.js",
+                                                       "uriBaseId": "%SRCROOT%",
+                                                       "index": 0
+                                                  },
+                                                  "region": {
+                                                       "startLine": 19,
+                                                       "startColumn": 72,
+                                                       "endColumn": 80
+                                                  }
+                                             },
+                                             "message": {
+                                                  "text": "password"
+                                             }
+                                        }
+                                   },
+                                   {
+                                        "location": {
+                                             "physicalLocation": {
+                                                  "artifactLocation": {
+                                                       "uri": "vulnerability.js",
+                                                       "uriBaseId": "%SRCROOT%",
+                                                       "index": 0
+                                                  },
+                                                  "region": {
+                                                       "startLine": 19,
+                                                       "startColumn": 17,
+                                                       "endColumn": 82
+                                                  }
+                                             },
+                                             "message": {
+                                                  "text": "`Loggin ... sword}`"
+                                             }
+                                        }
+                                   }
+                              ]
+                         }
+                    ]
+               },
+               {
+                    "threadFlows": [
+                         {
+                              "locations": [
+                                   {
+                                        "location": {
+                                             "physicalLocation": {
+                                                  "artifactLocation": {
+                                                       "uri": "vulnerability.js",
+                                                       "uriBaseId": "%SRCROOT%",
+                                                       "index": 0
+                                                  },
+                                                  "region": {
+                                                       "startLine": 36,
+                                                       "startColumn": 17,
+                                                       "endColumn": 25
+                                                  }
+                                             },
+                                             "message": {
+                                                  "text": "password"
+                                             }
+                                        }
+                                   },
+                                   {
+                                        "location": {
+                                             "physicalLocation": {
+                                                  "artifactLocation": {
+                                                       "uri": "vulnerability.js",
+                                                       "uriBaseId": "%SRCROOT%",
+                                                       "index": 0
+                                                  },
+                                                  "region": {
+                                                       "startLine": 17,
+                                                       "startColumn": 26,
+                                                       "endColumn": 34
+                                                  }
+                                             },
+                                             "message": {
+                                                  "text": "password"
+                                             }
+                                        }
+                                   },
+                                   {
+                                        "location": {
+                                             "physicalLocation": {
+                                                  "artifactLocation": {
+                                                       "uri": "vulnerability.js",
+                                                       "uriBaseId": "%SRCROOT%",
+                                                       "index": 0
+                                                  },
+                                                  "region": {
+                                                       "startLine": 19,
+                                                       "startColumn": 72,
+                                                       "endColumn": 80
+                                                  }
+                                             },
+                                             "message": {
+                                                  "text": "password"
+                                             }
+                                        }
+                                   },
+                                   {
+                                        "location": {
+                                             "physicalLocation": {
+                                                  "artifactLocation": {
+                                                       "uri": "vulnerability.js",
+                                                       "uriBaseId": "%SRCROOT%",
+                                                       "index": 0
+                                                  },
+                                                  "region": {
+                                                       "startLine": 19,
+                                                       "startColumn": 17,
+                                                       "endColumn": 82
+                                                  }
+                                             },
+                                             "message": {
+                                                  "text": "`Loggin ... sword}`"
+                                             }
+                                        }
+                                   }
+                              ]
+                         }
+                    ]
+               }
+          ],
+          "relatedLocations": [
+               {
+                    "id": 1,
+                    "physicalLocation": {
+                         "artifactLocation": {
+                              "uri": "vulnerability.js",
+                              "uriBaseId": "%SRCROOT%",
+                              "index": 0
+                         },
+                         "region": {
+                              "startLine": 19,
+                              "startColumn": 72,
+                              "endColumn": 80
+                         }
+                    },
+                    "message": {
+                         "text": "an access to password"
+                    }
+               },
+               {
+                    "id": 2,
+                    "physicalLocation": {
+                         "artifactLocation": {
+                              "uri": "vulnerability.js",
+                              "uriBaseId": "%SRCROOT%",
+                              "index": 0
+                         },
+                         "region": {
+                              "startLine": 36,
+                              "startColumn": 17,
+                              "endColumn": 25
+                         }
+                    },
+                    "message": {
+                         "text": "an access to password"
+                    }
+               }
+          ]
+     }
+]
