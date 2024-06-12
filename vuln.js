@@ -14,3 +14,17 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
     console.log('App listening on port 3000');
 });  
+
+app.post('/login', function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+ 
+    // Vulnerability
+    console.log(`U:${username}  P:${password}`);
+    if (username == 'admin' && password == 'password') {
+        res.cookie('session', '123456', { httpOnly: false });
+        res.redirect('/dashboard');
+    } else {
+        res.send('Invalid username or password');
+    }
+});
