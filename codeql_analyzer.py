@@ -30,7 +30,6 @@ def parse_sarif_file() -> None:
 
     data = sarif_data["runs"][0]
     results = data["results"]
-    # print(len(results))
     # Check if results exist and is not empty
     if results:
         with open("output.json", "w") as f:
@@ -43,10 +42,8 @@ def analyze_json_results():
     ls_locations = []
     with open("output.json", "r") as f:
         results = json.load(f)
-    # print(len(results))
     for result in results:
         # Access dictionary elements
-        # print(result)
         vulnerability = result["message"]["text"]
         locations = result["locations"]
         for location in locations:
@@ -84,7 +81,6 @@ def search_git_history(file_path:str, keyword: str) -> dict[str, str] | str:
         # Extract the sha, author, and time from the git log output
         git_log_output = result.stdout
         lines = git_log_output.split("\n")
-        print(lines)
         x = []
         for line in lines:
             if line.startswith("commit"):
@@ -114,7 +110,6 @@ if __name__ == "__main__":
     vulnerable_locations = analyze_json_results()
     for location in vulnerable_locations:
         code_snippet = get_code_at_line(location["file_path"], location["line"])
-        print(code_snippet)
         author = search_git_history(location["file_path"], code_snippet)
         author["file_path"] = location["file_path"]
         author["line"] = location["line"]
