@@ -1,10 +1,147 @@
 [
     {
+        "ruleId": "js/regex-injection",
+        "ruleIndex": 34,
+        "rule": {
+            "id": "js/regex-injection",
+            "index": 34
+        },
+        "message": {
+            "text": "This regular expression is constructed from a [user-provided value](1)."
+        },
+        "locations": [
+            {
+                "physicalLocation": {
+                    "artifactLocation": {
+                        "uri": "vuln.js",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 0
+                    },
+                    "region": {
+                        "startLine": 35,
+                        "startColumn": 28,
+                        "endColumn": 39
+                    }
+                }
+            }
+        ],
+        "partialFingerprints": {
+            "primaryLocationLineHash": "5a44b81594161443:1",
+            "primaryLocationStartColumnFingerprint": "23"
+        },
+        "codeFlows": [
+            {
+                "threadFlows": [
+                    {
+                        "locations": [
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 33,
+                                            "startColumn": 23,
+                                            "endColumn": 31
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "req.body"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 33,
+                                            "startColumn": 23,
+                                            "endColumn": 37
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "req.body.query"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 33,
+                                            "startColumn": 9,
+                                            "endColumn": 37
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "searchQuery"
+                                    }
+                                }
+                            },
+                            {
+                                "location": {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "vuln.js",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        },
+                                        "region": {
+                                            "startLine": 35,
+                                            "startColumn": 28,
+                                            "endColumn": 39
+                                        }
+                                    },
+                                    "message": {
+                                        "text": "searchQuery"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "relatedLocations": [
+            {
+                "id": 1,
+                "physicalLocation": {
+                    "artifactLocation": {
+                        "uri": "vuln.js",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 0
+                    },
+                    "region": {
+                        "startLine": 33,
+                        "startColumn": 23,
+                        "endColumn": 31
+                    }
+                },
+                "message": {
+                    "text": "user-provided value"
+                }
+            }
+        ]
+    },
+    {
         "ruleId": "js/clear-text-logging",
-        "ruleIndex": 49,
+        "ruleIndex": 42,
         "rule": {
             "id": "js/clear-text-logging",
-            "index": 49
+            "index": 42
         },
         "message": {
             "text": "This logs sensitive data returned by [an access to password](1) as clear text.\nThis logs sensitive data returned by [an access to password](2) as clear text."
@@ -201,148 +338,11 @@
         ]
     },
     {
-        "ruleId": "js/regex-injection",
-        "ruleIndex": 67,
-        "rule": {
-            "id": "js/regex-injection",
-            "index": 67
-        },
-        "message": {
-            "text": "This regular expression is constructed from a [user-provided value](1)."
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "vuln.js",
-                        "uriBaseId": "%SRCROOT%",
-                        "index": 0
-                    },
-                    "region": {
-                        "startLine": 35,
-                        "startColumn": 28,
-                        "endColumn": 39
-                    }
-                }
-            }
-        ],
-        "partialFingerprints": {
-            "primaryLocationLineHash": "5a44b81594161443:1",
-            "primaryLocationStartColumnFingerprint": "23"
-        },
-        "codeFlows": [
-            {
-                "threadFlows": [
-                    {
-                        "locations": [
-                            {
-                                "location": {
-                                    "physicalLocation": {
-                                        "artifactLocation": {
-                                            "uri": "vuln.js",
-                                            "uriBaseId": "%SRCROOT%",
-                                            "index": 0
-                                        },
-                                        "region": {
-                                            "startLine": 33,
-                                            "startColumn": 23,
-                                            "endColumn": 31
-                                        }
-                                    },
-                                    "message": {
-                                        "text": "req.body"
-                                    }
-                                }
-                            },
-                            {
-                                "location": {
-                                    "physicalLocation": {
-                                        "artifactLocation": {
-                                            "uri": "vuln.js",
-                                            "uriBaseId": "%SRCROOT%",
-                                            "index": 0
-                                        },
-                                        "region": {
-                                            "startLine": 33,
-                                            "startColumn": 23,
-                                            "endColumn": 37
-                                        }
-                                    },
-                                    "message": {
-                                        "text": "req.body.query"
-                                    }
-                                }
-                            },
-                            {
-                                "location": {
-                                    "physicalLocation": {
-                                        "artifactLocation": {
-                                            "uri": "vuln.js",
-                                            "uriBaseId": "%SRCROOT%",
-                                            "index": 0
-                                        },
-                                        "region": {
-                                            "startLine": 33,
-                                            "startColumn": 9,
-                                            "endColumn": 37
-                                        }
-                                    },
-                                    "message": {
-                                        "text": "searchQuery"
-                                    }
-                                }
-                            },
-                            {
-                                "location": {
-                                    "physicalLocation": {
-                                        "artifactLocation": {
-                                            "uri": "vuln.js",
-                                            "uriBaseId": "%SRCROOT%",
-                                            "index": 0
-                                        },
-                                        "region": {
-                                            "startLine": 35,
-                                            "startColumn": 28,
-                                            "endColumn": 39
-                                        }
-                                    },
-                                    "message": {
-                                        "text": "searchQuery"
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ],
-        "relatedLocations": [
-            {
-                "id": 1,
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "vuln.js",
-                        "uriBaseId": "%SRCROOT%",
-                        "index": 0
-                    },
-                    "region": {
-                        "startLine": 33,
-                        "startColumn": 23,
-                        "endColumn": 31
-                    }
-                },
-                "message": {
-                    "text": "user-provided value"
-                }
-            }
-        ]
-    },
-    {
         "ruleId": "js/missing-rate-limiting",
-        "ruleIndex": 70,
+        "ruleIndex": 55,
         "rule": {
             "id": "js/missing-rate-limiting",
-            "index": 70
+            "index": 55
         },
         "message": {
             "text": "This route handler performs [a file system access](1), but is not rate-limited."
