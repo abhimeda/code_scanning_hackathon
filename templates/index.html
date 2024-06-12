@@ -5,7 +5,9 @@
     <div class="container">
         {% for post in posts %}
             <div class="post">
-                <h3>Author: {{ post['author'] }}</h3>
+                <a href="#">
+					<h3>{{ post['author'] }}</h3>
+				</a>
                 <div class="email">Email: <a href="mailto:{{ post['email'] }}">{{ post['email'] }}</a></div>
                 <div class="date">Date: <span class="badge badge-primary">{{ post['date'] }}</span></div>
                 <div class="commit">Commit SHA: <code>{{ post['sha'] }}</code></div>
