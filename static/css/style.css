@@ -53,25 +53,27 @@ hr {
 }
 
 /* Style for the 'Show Preview' button */
-.post .preview-btn {
-    background-color: #007bff !important;  /* Blue background */
-    color: rgb(255, 255, 255) !important;               /* White text */
+
+.preview-btn {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
-    outline: none;
-    font-size: 16px;                       /* Ensures visibility and legibility */
+}
+.preview-btn:hover {
+    background-color: #0056b3;
 }
 
-/* Style for the code preview area */
-.post .code-preview {
-    background-color: #f4f4f4 !important;  /* Light gray background */
-    border: 1px solid #ccc !important;     /* Subtle border */
-    padding: 10px;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    font-family: 'Courier New', Courier, monospace; /* Ensures code-like font */
-    margin-top: 10px;
-    display: none;                         /* Initially hidden */
+.highlight {
+    background-color: #ffe6e6;
+    border-left: 4px solid #ff3333;
+    padding: 5px 10px;
+    margin: 2px 0;
+    display: block;
+    color: #cc0000;
+    font-weight: bold; /* Makes the text bold */
+    font-style: italic; /* Optionally, italicize the text for further emphasis */
 }

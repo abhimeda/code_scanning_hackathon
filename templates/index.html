@@ -6,17 +6,39 @@
         {% for post in posts %}
             <div class="post">
                 <h3>{{ post['author'] }}</h3>
-                <div class="email"><a href="mailto:{{ post['email'] }}">{{ post['email'] }}</a></div>
-                <div class="date"><span class="badge badge-primary">{{ post['date'] }}</span></div>
-                <div class="commit">Commit SHA: <code>{{ post['sha'] }}</code></div>
-                <div class="file">File Path: <strong>{{ post['file_path'] }}</strong></div>
-                <div class="line">Line Number: <strong>{{ post['line'] }}</strong></div>
-                <p class="message">{{ post['message'] }}</p>
+                <div><a href="mailto:{{ post['email'] }}">{{ post['email'] }}</a></div>
+                <div><span class="badge badge-primary">{{ post['date'] }}</span></div>
+                <div>Commit SHA: <code>{{ post['sha'] }}</code></div>
+                <div>File Path: <strong>{{ post['file_path'] }}</strong></div>
+                <div>Line Number: <strong>{{ post['line'] }}</strong></div>
+                
+                <!-- Toggle Button -->
                 <button class="preview-btn" onclick="togglePreview(this)">Show Preview</button>
-                <pre class="code-preview" style="display:none;">{{ post['preview'] | join('\n') }}</pre>
+                
+                <!-- Preview Messages (initially hidden) -->
+                <ul style="display: none;">
+                    {% for preview_line in post['preview'] %}
+                        <p class="{{ 'highlight' if loop.index0 == post['preview_index'] else '' }}">
+                            {{ preview_line }}
+                        <p>
+                    {% endfor %}
+                </ul>
+                
+                <p>{{ post['message'] }}</p>
                 <hr>
             </div>
         {% endfor %}
     </div>
+    <script>
+        function togglePreview(button) {
+            var previewUl = button.nextElementSibling;  // Assumes <ul> is right after the button
+            if (previewUl.style.display === "none") {
+                previewUl.style.display = "block";
+                button.textContent = "Hide Preview";  // Change button text
+            } else {
+                previewUl.style.display = "none";
+                button.textContent = "Show Preview";  // Change button text
+            }
+        }
+    </script>
 {% endblock %}
-
