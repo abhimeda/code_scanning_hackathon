@@ -15,7 +15,8 @@
             " \n",
             "    // Simulated data  \n",
             "    var data = ['John', 'Jane', 'Doe', 'Smith', 'Admin'];\n"
-        ]
+        ],
+        "preview_index": 3
     },
     {
         "sha": "e50c1e68e909f30aee1874dd475fc285cd8bbf78",
@@ -33,7 +34,8 @@
             "    if (username == 'admin' && password == 'password') {\n",
             "        res.cookie('session', '123456', { httpOnly: false });\n",
             "        res.redirect('/dashboard');\n"
-        ]
+        ],
+        "preview_index": 3
     },
     {
         "sha": "eef526c096f25156991459d5162180a566259117",
@@ -51,6 +53,7 @@
             "    // Vulnerability\n",
             "    res.sendFile(__dirname + '/index.html');\n",
             "});\n"
-        ]
+        ],
+        "preview_index": 3
     }
 ]

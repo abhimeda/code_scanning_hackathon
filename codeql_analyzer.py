@@ -58,7 +58,8 @@ def get_code_at_line(file_path: str, line_number: int):
         if line_number <= len(lines):
             code = {
                 "single": lines[line_number - 1].strip(),
-                "preview": lines[max(0, line_number - 4):min(len(lines), line_number + 3)]
+                "preview": lines[max(0, line_number - 4):min(len(lines), line_number + 3)],
+                "preview_index": line_number - 1 - max(0, line_number - 4)
             }
             return code
         else:
@@ -114,6 +115,7 @@ if __name__ == "__main__":
         vuln["line"] = location["line"]
         vuln["message"] = location["message"]
         vuln["preview"] = code["preview"]
+        vuln["preview_index"] = code["preview_index"]
         output.append(vuln)
 
     with open(output_file, "w") as f:
