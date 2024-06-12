@@ -84,7 +84,7 @@ def search_git_history(file_path:str, keyword: str) -> dict[str, str] | str:
         x = []
         for line in lines:
             if line.startswith("commit"):
-                sha = line.split()[1]
+                sha = line.removeprefix("commit").strip()
                 x.append(sha)
             elif line.startswith("Author"):
                 author = line.split(":")[1].split(" <")[0].strip()
@@ -92,7 +92,7 @@ def search_git_history(file_path:str, keyword: str) -> dict[str, str] | str:
                 x.append(author)
                 x.append(email)
             elif line.startswith("Date"):
-                date = line.split(":")[1].strip()
+                date = line.removeprefix("Date").strip()
                 x.append(date)
         return {"sha": x[0], "author": x[1], "email": x[2], "date": x[3]}
 
