@@ -1,9 +1,21 @@
 [
     {
+<<<<<<< HEAD
+=======
+        "sha": "a0a70d48b0b0d64150d225f54d8c830ac279803e",
+        "author": "Mustaballer",
+        "email": "mus2003.abdul@gmai.com",
+        "date": ":   Wed Jun 12 14:49:40 2024 -0400",
+        "file_path": "vuln.js",
+        "line": 35,
+        "message": "This regular expression is constructed from a [user-provided value](1)."
+    },
+    {
+>>>>>>> c3e1b9e670e46b69f3352b5f87104eb01ed8c27c
         "sha": "e50c1e68e909f30aee1874dd475fc285cd8bbf78",
         "author": "Meda, Abhinav",
         "email": "Abhinav.Meda@amd.com",
-        "date": "Wed Jun 12 14",
+        "date": ":   Wed Jun 12 14:46:07 2024 -0400",
         "file_path": "vuln.js",
         "line": 23,
         "message": "This logs sensitive data returned by [an access to password](1) as clear text.\nThis logs sensitive data returned by [an access to password](2) as clear text."
@@ -21,7 +33,7 @@
         "sha": "eef526c096f25156991459d5162180a566259117",
         "author": "Daniel Su",
         "email": "danielsu@amd.com",
-        "date": "Wed Jun 12 14",
+        "date": ":   Wed Jun 12 14:43:43 2024 -0400",
         "file_path": "vuln.js",
         "line": 9,
         "message": "This route handler performs [a file system access](1), but is not rate-limited."
