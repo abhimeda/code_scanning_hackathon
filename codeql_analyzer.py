@@ -1,6 +1,6 @@
 import json
 import subprocess
-from typing import Dict
+from app import app
 
 
 def analyze_codeql_db(database_name: str) -> None:
@@ -14,7 +14,7 @@ def analyze_codeql_db(database_name: str) -> None:
         ["codeql", "database", "analyze", database_name, "--format=sarif-latest", "--output=results.sarif"],
         capture_output=True, text=True)
     if result.returncode == 0:
-        print("CodeQL analysis completed successfully.")
+        print("CodeQL analysis completed successfully")
     else:
         print("CodeQL analysis failed. Error message:")
         print(result.stderr)
@@ -30,7 +30,6 @@ def parse_sarif_file() -> None:
 
     data = sarif_data["runs"][0]
     results = data["results"]
-    print(len(results))
     # Check if results exist and is not empty
     if results:
         with open("output.json", "w") as f:
@@ -43,10 +42,8 @@ def analyze_json_results():
     ls_locations = []
     with open("output.json", "r") as f:
         results = json.load(f)
-    print(len(results))
     for result in results:
         # Access dictionary elements
-        print(result)
         vulnerability = result["message"]["text"]
         locations = result["locations"]
         for location in locations:
@@ -121,3 +118,5 @@ if __name__ == "__main__":
         authors.append(author)
     with open("authors.json", "w") as f:
         json.dump(authors, f, indent=4)
+
+    app.run()
