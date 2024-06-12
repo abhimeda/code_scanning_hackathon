@@ -4,3 +4,51 @@ h1 {
     text-align: center;
     padding: 10px;
 }
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.post h2 {
+    color: #333;
+    font-size: 1.5em;
+}
+
+.email a, .file strong, .line strong {
+    color: #007bff;
+}
+
+.email, .date, .commit, .file, .line {
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.badge {
+    background-color: #007bff;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.message {
+    background-color: #fff0f0;
+    border-left: 3px solid #ff6666;
+    padding: 10px;
+    margin-top: 20px;
+    white-space: pre-wrap; /* Maintains whitespace formatting for messages. */
+}
+
+hr {
+    border-top: 1px solid #ccc;
+}
