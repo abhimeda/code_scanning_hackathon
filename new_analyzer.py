@@ -161,8 +161,8 @@ if __name__ == "__main__":
         }
 
     # old format, just an array of vulns
-    with open(stash_file, "w") as f:
-        json.dump(stash, f, indent=4)
+    # with open(stash_file, "w") as f:
+    #     json.dump(stash, f, indent=4)
     # new format, vulns are organized by scan file, no repeated vulns
     with open(output_file, "w") as f:
         json.dump(output, f, indent=4)
