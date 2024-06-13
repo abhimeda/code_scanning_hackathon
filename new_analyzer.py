@@ -148,7 +148,8 @@ if __name__ == "__main__":
         output[scan_file] = {
             "sha": scan_sha,
             "date": scan_file.split(f"{scan_sha}-")[1],
-            "vulns": [v for v in stash if v["scan_file"] == scan_file]
+            "new_vulns": [v for v in stash if v["scan_file"] == scan_file and v["new"] == True],
+            "old_vulns": [v for v in stash if v["scan_file"] == scan_file and v["new"] == False]
         }
 
     # old format, just an array of vulns
