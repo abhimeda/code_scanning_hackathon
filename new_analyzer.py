@@ -82,7 +82,12 @@ def search_git_log(location: dict, code: dict):
 
 def execute_cmd(cmd: list[str], cwd: str):
     print(f"Directory: {cwd} | Command: {' '.join(cmd)}")
-    return subprocess.run(cmd, capture_output=True, text=True, cwd=cwd)
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd)
+    if result.returncode == 0:
+        return result
+    else:
+        print(f"Command error: {result.stderr}")
+        return result
 
 
 history_dir = "database"
@@ -136,6 +141,7 @@ if __name__ == "__main__":
             if not any(v["sha"] == vuln["sha"]
                        and v["file_path"] == vuln["file_path"]
                        and v["preview"][v["preview_index"]] == vuln["preview"][vuln["preview_index"]]
+                       and v["line"] == vuln["line"]
                        for v in stash):
                 vuln["new"] = True
             stash.append(vuln)
