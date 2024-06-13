@@ -118,4 +118,27 @@ hr {
     color: #fff; /* Light text color */  
     font-size: 1.2em; /* Make the text larger */  
     font-weight: bold; /* Make the text bold */  
+}
+.issue-btn {  
+    margin-top: 10px;  
+    /* flex-direction: right; /* Position the button at the right */
+    background-color: white;  
+    color: black;  
+    border: none;  
+    padding: 8px 16px;  
+    border-radius: 5px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease; /* Add transition for smooth color change */  
 }  
+.issue-btn:hover {  
+    background-color: #007bff; /* Change background color on hover */  
+    color: white; /* Change text color on hover */  
+}  
+.issue-btn:disabled {  
+    background-color: #ccc;  
+    cursor: not-allowed;  
+}  
+.issue-btn:disabled:hover {  
+    background-color: #ccc; /* Keep the same background color on hover when disabled */  
+    color: black; /* Keep the same text color on hover when disabled */  
+}
