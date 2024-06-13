@@ -3,7 +3,16 @@ import subprocess
 from app import app
 
 
-def results_from_sarif(analyze_file: str):
+def results_from_sarif(analyze_file: str) -> list:
+    """
+    Extracts the results from a SARIF file.
+
+    Args:
+        analyze_file (str): The path to the SARIF file.
+
+    Returns:
+        list: A list of vulnerability results.
+    """
     with open(analyze_file) as f:
         sarif_data = json.load(f)
         results = sarif_data["runs"][0]["results"]
@@ -13,13 +22,20 @@ def results_from_sarif(analyze_file: str):
             print("No vulnerabilities found in SARIF file.")
 
 
-def locations_from_results(results):
+def locations_from_results(results: list) -> list:
+    """
+    Extracts the locations from the vulnerability results.
+
+    Args:
+        results (list): The list of vulnerability results.
+
+    Returns:
+        list: A list of location dictionaries.
+    """
     locations = []
     for result in results:
-        # Access dictionary elements
         vulnerability = result["message"]["text"]
         for location in result["locations"]:
-            # Access location details
             file_path = location["physicalLocation"]["artifactLocation"]["uri"]
             line = location["physicalLocation"]["region"]["startLine"]
             locations.append(
@@ -27,7 +43,17 @@ def locations_from_results(results):
     return locations
 
 
-def code_from_location(repo_dir: str, location: dict):
+def code_from_location(repo_dir: str, location: dict) -> dict:
+    """
+    Retrieves the code snippet from a specific location in a file.
+
+    Args:
+        repo_dir (str): The directory of the repository.
+        location (dict): The location dictionary.
+
+    Returns:
+        dict: A dictionary containing the code snippet.
+    """
     file_path = location["file_path"]
     line_number = location["line"]
     half_num_lines = 5
@@ -45,7 +71,17 @@ def code_from_location(repo_dir: str, location: dict):
             print("Line number exceeds the total number of lines in the file.")
 
 
-def search_git_log(location: dict, code: dict):
+def search_git_log(location: dict, code: dict) -> dict:
+    """
+    Searches the git log for a specific keyword in a file.
+
+    Args:
+        location (dict): The location dictionary.
+        code (dict): The code dictionary.
+
+    Returns:
+        dict: A dictionary containing the git log information.
+    """
     file_path = location["file_path"]
     keyword = code["single"]
 
@@ -69,7 +105,6 @@ def search_git_log(location: dict, code: dict):
             elif line.startswith("Date"):
                 date = line.removeprefix("Date").strip()
                 temp["date"] = date
-            # check if all fields in temp are present; if so, assign info = temp
             if all(key in temp for key in ["sha", "author", "email", "date"]):
                 info = temp
                 temp = {}
@@ -80,7 +115,17 @@ def search_git_log(location: dict, code: dict):
         return ""
 
 
-def execute_cmd(cmd: list[str], cwd: str):
+def execute_cmd(cmd: list[str], cwd: str) -> subprocess.CompletedProcess:
+    """
+    Executes a command in the specified directory.
+
+    Args:
+        cmd (list): The command to execute.
+        cwd (str): The current working directory.
+
+    Returns:
+        subprocess.CompletedProcess: The result of the command execution.
+    """
     print(f"Directory: {cwd} | Command: {' '.join(cmd)}")
     result = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd)
     if result.returncode == 0:
@@ -137,7 +182,6 @@ if __name__ == "__main__":
                 "new": False
             }
 
-            # check if a vuln with the same sha, file_path, and code_line is already in the stash
             if not any(v["sha"] == vuln["sha"]
                        and v["file_path"] == vuln["file_path"]
                        and v["preview"][v["preview_index"]] == vuln["preview"][vuln["preview_index"]]
@@ -158,10 +202,8 @@ if __name__ == "__main__":
             "old_vulns": [v for v in stash if v["scan_file"] == scan_file and v["new"] == False]
         }
 
-    # old format, just an array of vulns
     with open(stash_file, "w") as f:
         json.dump(stash, f, indent=4)
-    # new format, vulns are organized by scan file, no repeated vulns
     with open(output_file, "w") as f:
         json.dump(output, f, indent=4)
 
