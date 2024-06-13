@@ -8,8 +8,5 @@ By: Daniel Su, Mustafa Abdulrahman, Abhinav Meda
 3) Install requirements.txt via pip
 4) run python new_analyzer.py
 
-## install.py (Easiest)
-1) Just run install.py once :)
-
 ## Post Install
 1) Run new_analyzer.py
