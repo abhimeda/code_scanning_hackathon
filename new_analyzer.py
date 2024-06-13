@@ -72,6 +72,7 @@ def search_git_log(location: dict, code: dict):
             # check if all fields in temp are present; if so, assign info = temp
             if all(key in temp for key in ["sha", "author", "email", "date"]):
                 info = temp
+                temp = {}
         return info
     else:
         print("Failed to search git history. Error message:")
@@ -127,15 +128,17 @@ if __name__ == "__main__":
                 "line": location["line"],
                 "message": location["message"],
                 "preview": code["preview"],
-                "preview_index": code["preview_index"]
+                "preview_index": code["preview_index"],
+                "new": False
             }
 
-            sha = vuln["sha"]
-            file_path = vuln["file_path"]
-            code_line = vuln["preview"][vuln["preview_index"]]
             # check if a vuln with the same sha, file_path, and code_line is already in the stash
-            if not any(v["sha"] == sha and v["file_path"] == file_path and v["preview"][v["preview_index"]] == code_line for v in stash):
-                stash.append(vuln)
+            if not any(v["sha"] == vuln["sha"]
+                       and v["file_path"] == vuln["file_path"]
+                       and v["preview"][v["preview_index"]] == vuln["preview"][vuln["preview_index"]]
+                       for v in stash):
+                vuln["new"] = True
+            stash.append(vuln)
 
     execute_cmd(["git", "checkout", repo_branch], repo_dir)
 
