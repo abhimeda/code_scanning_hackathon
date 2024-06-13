@@ -111,3 +111,11 @@ hr {
 .emoji {  
     margin-left: 5px;  
 } 
+
+.custom-alert {  
+    background-color: #333; /* Dark background color */  
+    border-color: #666; /* Dark border color */  
+    color: #fff; /* Light text color */  
+    font-size: 1.2em; /* Make the text larger */  
+    font-weight: bold; /* Make the text bold */  
+}  

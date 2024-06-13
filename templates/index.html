@@ -23,9 +23,11 @@
                 <div class="card-body">    
                     {% for vuln in value['new_vulns'] %}    
                         <div class="post">    
-                            <h3><span class="badge new-badge">NEW</span> {{ vuln['author'] }} </h3> <!-- Add 'NEW' badge here -->  
-                            <div><a href="mailto:{{ vuln['email'] }}">{{ vuln['email'] }}</a></div>    
+                            <h3><span class="badge new-badge">NEW</span> {{ vuln['title'] }} </h3> <!-- Add 'NEW' badge here -->  
+                            <div class="alert custom-alert" role="alert">{{ vuln['message'] }}</div>  
                             <div><span class="badge badge-danger">{{ vuln['date'] }}</span></div>  <!-- Change badge color to 'danger' for new vulnerabilities -->  
+                            <div>Name: <strong>{{ vuln['author'] }}</strong></div>    
+                            <div>Email: <a href="mailto:{{ vuln['email'] }}">{{ vuln['email'] }}</a></div>    
                             <div>Commit SHA: <code>{{ vuln['sha'] }}</code></div>    
                             <div>File Path: <strong>{{ vuln['file_path'] }}</strong></div>    
                             <div>Line Number: <strong>{{ vuln['line'] }}</strong></div>    
@@ -41,15 +43,14 @@
                                     <p>    
                                 {% endfor %}    
                             </ul>    
-                                
-                            <p>{{ vuln['message'] }}</p>    
                             <hr>    
                         </div>    
                     {% endfor %}    
               
                     {% for vuln in value['old_vulns'] %}    
                         <div class="post">    
-                            <h3>{{ vuln['author'] }}</h3>    
+                            <h3>{{ vuln['title'] }} </h3> 
+                            <div class="alert custom-alert" role="alert">{{ vuln['message'] }}</div>  
                             <div><a href="mailto:{{ vuln['email'] }}">{{ vuln['email'] }}</a></div>    
                             <div><span class="badge badge-primary">{{ vuln['date'] }}</span></div>    
                             <div>Commit SHA: <code>{{ vuln['sha'] }}</code></div>    

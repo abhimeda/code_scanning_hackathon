@@ -4,5 +4,4 @@ database/
 tensorflow/
 .idea/
 .env
-*.json
 *.sarif

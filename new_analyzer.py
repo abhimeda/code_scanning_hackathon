@@ -34,12 +34,14 @@ def locations_from_results(results: list) -> list:
     """
     locations = []
     for result in results:
-        vulnerability = result["message"]["text"]
+        # Access dictionary elements
+        vuln_msg = result["message"]["text"]
+        vuln_title = result["ruleId"]
         for location in result["locations"]:
             file_path = location["physicalLocation"]["artifactLocation"]["uri"]
             line = location["physicalLocation"]["region"]["startLine"]
             locations.append(
-                {"file_path": file_path, "line": line, "message": vulnerability})
+                {"file_path": file_path, "line": line, "title": vuln_title, "message": vuln_msg})
     return locations
 
 
@@ -103,7 +105,7 @@ def search_git_log(location: dict, code: dict) -> dict:
                 temp["author"] = author
                 temp["email"] = email
             elif line.startswith("Date"):
-                date = line.removeprefix("Date").strip()
+                date = line.removeprefix("Date:").strip()
                 temp["date"] = date
             if all(key in temp for key in ["sha", "author", "email", "date"]):
                 info = temp
@@ -176,12 +178,14 @@ if __name__ == "__main__":
                 "date": search["date"],
                 "file_path": location["file_path"],
                 "line": location["line"],
+                "title": location["title"],
                 "message": location["message"],
                 "preview": code["preview"],
                 "preview_index": code["preview_index"],
                 "new": False
             }
 
+            # check if a vuln with the same sha, file_path, preview[preview_index], and line is already in the stash
             if not any(v["sha"] == vuln["sha"]
                        and v["file_path"] == vuln["file_path"]
                        and v["preview"][v["preview_index"]] == vuln["preview"][vuln["preview_index"]]
@@ -202,8 +206,10 @@ if __name__ == "__main__":
             "old_vulns": [v for v in stash if v["scan_file"] == scan_file and v["new"] == False]
         }
 
-    with open(stash_file, "w") as f:
-        json.dump(stash, f, indent=4)
+    # old format, just an array of vulns
+    # with open(stash_file, "w") as f:
+    #     json.dump(stash, f, indent=4)
+    # new format, vulns are organized by scan file, no repeated vulns
     with open(output_file, "w") as f:
         json.dump(output, f, indent=4)
 
