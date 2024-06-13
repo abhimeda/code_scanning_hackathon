@@ -33,7 +33,7 @@
                             <div>Line Number: <strong>{{ vuln['line'] }}</strong></div>    
                                 
                             <!-- Toggle Button -->    
-                            <button class="issue-btn" onclick="createIssue(this)">Create GitHub Issue</button> <!-- Add 'Create GitHub Issue' button here -->     
+                            <button class="issue-btn" data-vuln=`{{ vuln }}` onclick="createIssue(this)">Create GitHub Issue</button>  
                             <button class="preview-btn" onclick="togglePreview(this)">Show Preview</button>    
                                 
                             <!-- Preview Messages (initially hidden) -->    
@@ -60,7 +60,7 @@
                             <div>Line Number: <strong>{{ vuln['line'] }}</strong></div>     
                                 
                             <!-- Toggle Button -->  
-                            <button class="issue-btn" onclick="createIssue(this)">Create GitHub Issue</button> <!-- Add 'Create GitHub Issue' button here -->       
+                            <button class="issue-btn" data-vuln=`{{ vuln }}` onclick="createIssue(this)">Create GitHub Issue</button>  
                             <button class="preview-btn" onclick="togglePreview(this)">Show Preview</button>    
                                 
                             <!-- Preview Messages (initially hidden) -->    
@@ -92,8 +92,26 @@
     }  
     function createIssue(button) {  
         console.log('Button clicked');  
-        button.disabled = true; // Disable the button  
-    }  
+        button.disabled = true; // Disable the button to prevent multiple submissions
+        
+        // Retrieve and log the JSON string from the data-vuln attribute
+        var jsonString = button.getAttribute('data-vuln');
+        console.log("JSON String:", jsonString); // This will show what the actual string looks like
+
+        try {
+            // Attempt to parse the JSON string
+            var vuln = JSON.parse(jsonString);
+            console.log(vuln); // Log the parsed object to verify
+        } catch (error) {
+            console.error("Parsing Error:", error);
+            button.disabled = false; // Re-enable the button in case of parsing failure
+            return; // Exit the function on failure
+        }
+
+        // Further actions if JSON parsing is successful
+    }
+
+
 </script>  
 
 {% endblock %}
