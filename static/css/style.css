@@ -142,3 +142,12 @@ hr {
     background-color: #ccc; /* Keep the same background color on hover when disabled */  
     color: black; /* Keep the same text color on hover when disabled */  
 }
+
+.code-preview {  
+    display: none; 
+    font-family: 'Courier New', Courier, monospace; /* This is a typical 'code' font */  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add box shadow */  
+    padding: 10px; /* Add some padding */  
+    background-color: #333; /* Add a dark background color */  
+    color: #fff; /* Make the text color white */  
+}  
