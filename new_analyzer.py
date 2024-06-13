@@ -17,13 +17,14 @@ def locations_from_results(results):
     locations = []
     for result in results:
         # Access dictionary elements
-        vulnerability = result["message"]["text"]
+        vuln_msg = result["message"]["text"]
+        vuln_title = result["ruleId"]
         for location in result["locations"]:
             # Access location details
             file_path = location["physicalLocation"]["artifactLocation"]["uri"]
             line = location["physicalLocation"]["region"]["startLine"]
             locations.append(
-                {"file_path": file_path, "line": line, "message": vulnerability})
+                {"file_path": file_path, "line": line, "title": vuln_title, "message": vuln_msg})
     return locations
 
 
@@ -131,13 +132,14 @@ if __name__ == "__main__":
                 "date": search["date"],
                 "file_path": location["file_path"],
                 "line": location["line"],
+                "title": location["title"],
                 "message": location["message"],
                 "preview": code["preview"],
                 "preview_index": code["preview_index"],
                 "new": False
             }
 
-            # check if a vuln with the same sha, file_path, and code_line is already in the stash
+            # check if a vuln with the same sha, file_path, preview[preview_index], and line is already in the stash
             if not any(v["sha"] == vuln["sha"]
                        and v["file_path"] == vuln["file_path"]
                        and v["preview"][v["preview_index"]] == vuln["preview"][vuln["preview_index"]]
