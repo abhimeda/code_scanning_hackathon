@@ -1,79 +1,113 @@
-h1 {
-    border: 2px #eee solid;
-    color: brown;
-    text-align: center;
-    padding: 10px;
-}
+body {  
+    background-color: #1a1a1a;  
+    color: #e6e6e6;  
+}  
+  
+h1 {  
+    border: 2px #333 solid;  
+    color: #e6e6e6;  
+    text-align: center;  
+    padding: 10px;  
+}  
 
-.container {
-    width: 80%;
-    margin: auto;
-}
+.title {  
+    font-family: 'Roboto', Arial, sans-serif; /* This is a professional font */  
+    border: 2px #eee solid;  
+    /* color: brown;   */
+    text-align: center;  
+    padding: 10px;  
+}  
+  
+.logo {  
+    height: 50px; /* Adjust as needed */  
+    width: 50px; /* Adjust as needed */  
+    margin-right: 10px;  
+} 
+  
+.container {  
+    width: 80%;  
+    margin: auto;  
+}  
+  
+.post {  
+    background-color: #333;  
+    border: 1px solid #666;  
+    border-radius: 8px;  
+    padding: 20px;  
+    margin-bottom: 20px;  
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1);  
+}  
+  
+.post h2 {  
+    color: #ccc;  
+    font-size: 1.5em;  
+}  
+  
+.email a, .file strong, .line strong {  
+    color: #33ccff;  
+}  
+  
+.email, .date, .commit, .file, .line {  
+    margin-bottom: 8px;  
+    font-size: 1em;  
+}  
+  
+.badge {  
+    background-color: #33ccff;  
+    color: white;  
+    padding: 3px 10px;  
+    border-radius: 5px;  
+} 
 
-.post {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+.new-badge {  
+    background-color: red !important; /* Force the background color to be red */  
+    color: white !important; /* Force the text color to be white */  
+}  
+  
+.message {  
+    background-color: #1a1a1a;  
+    border-left: 3px solid #ff6666;  
+    padding: 10px;  
+    margin-top: 20px;  
+    white-space: pre-wrap; /* Maintains whitespace formatting for messages. */  
+}  
+  
+hr {  
+    border-top: 1px solid #666;  
+}  
+  
+/* Style for the 'Show Preview' button */  
+  
+.preview-btn {  
+    margin-top: 10px;  
+    background-color: #33ccff;  
+    color: white;  
+    border: none;  
+    padding: 8px 16px;  
+    border-radius: 5px;  
+    cursor: pointer;  
+}  
+.preview-btn:hover {  
+    background-color: #0099cc;  
+}  
+  
+.highlight {  
+    background-color: #333;  
+    border-left: 4px solid #ff3333;  
+    padding: 5px 10px;  
+    margin: 2px 0;  
+    display: block;  
+    color: #ff6666;  
+    font-weight: bold; /* Makes the text bold */  
+    font-style: italic; /* Optionally, italicize the text for further emphasis */  
+}  
 
-.post h2 {
-    color: #333;
-    font-size: 1.5em;
-}
-
-.email a, .file strong, .line strong {
-    color: #007bff;
-}
-
-.email, .date, .commit, .file, .line {
-    margin-bottom: 8px;
-    font-size: 1em;
-}
-
-.badge {
-    background-color: #007bff;
-    color: white;
-    padding: 3px 10px;
-    border-radius: 5px;
-}
-
-.message {
-    background-color: #fff0f0;
-    border-left: 3px solid #ff6666;
-    padding: 10px;
-    margin-top: 20px;
-    white-space: pre-wrap; /* Maintains whitespace formatting for messages. */
-}
-
-hr {
-    border-top: 1px solid #ccc;
-}
-
-/* Style for the 'Show Preview' button */
-
-.preview-btn {
-    margin-top: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.preview-btn:hover {
-    background-color: #0056b3;
-}
-
-.highlight {
-    background-color: #ffe6e6;
-    border-left: 4px solid #ff3333;
-    padding: 5px 10px;
-    margin: 2px 0;
-    display: block;
-    color: #cc0000;
-    font-weight: bold; /* Makes the text bold */
-    font-style: italic; /* Optionally, italicize the text for further emphasis */
-}
+.commit-info {  
+    font-family: 'Courier New', Courier, monospace; /* Change to any font you like */  
+    color: #ff6347; /* Change to any color you like */  
+    margin-left: 10px;  
+}  
+  
+.emoji {  
+    margin-left: 5px;  
+} 

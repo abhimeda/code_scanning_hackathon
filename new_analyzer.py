@@ -72,6 +72,7 @@ def search_git_log(location: dict, code: dict):
             # check if all fields in temp are present; if so, assign info = temp
             if all(key in temp for key in ["sha", "author", "email", "date"]):
                 info = temp
+                temp = {}
         return info
     else:
         print("Failed to search git history. Error message:")
@@ -81,7 +82,12 @@ def search_git_log(location: dict, code: dict):
 
 def execute_cmd(cmd: list[str], cwd: str):
     print(f"Directory: {cwd} | Command: {' '.join(cmd)}")
-    return subprocess.run(cmd, capture_output=True, text=True, cwd=cwd)
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd)
+    if result.returncode == 0:
+        return result
+    else:
+        print(f"Command error: {result.stderr}")
+        return result
 
 
 history_dir = "database"
@@ -127,15 +133,18 @@ if __name__ == "__main__":
                 "line": location["line"],
                 "message": location["message"],
                 "preview": code["preview"],
-                "preview_index": code["preview_index"]
+                "preview_index": code["preview_index"],
+                "new": False
             }
 
-            sha = vuln["sha"]
-            file_path = vuln["file_path"]
-            code_line = vuln["preview"][vuln["preview_index"]]
             # check if a vuln with the same sha, file_path, and code_line is already in the stash
-            if not any(v["sha"] == sha and v["file_path"] == file_path and v["preview"][v["preview_index"]] == code_line for v in stash):
-                stash.append(vuln)
+            if not any(v["sha"] == vuln["sha"]
+                       and v["file_path"] == vuln["file_path"]
+                       and v["preview"][v["preview_index"]] == vuln["preview"][vuln["preview_index"]]
+                       and v["line"] == vuln["line"]
+                       for v in stash):
+                vuln["new"] = True
+            stash.append(vuln)
 
     execute_cmd(["git", "checkout", repo_branch], repo_dir)
 
@@ -145,7 +154,8 @@ if __name__ == "__main__":
         output[scan_file] = {
             "sha": scan_sha,
             "date": scan_file.split(f"{scan_sha}-")[1],
-            "vulns": [v for v in stash if v["scan_file"] == scan_file]
+            "new_vulns": [v for v in stash if v["scan_file"] == scan_file and v["new"] == True],
+            "old_vulns": [v for v in stash if v["scan_file"] == scan_file and v["new"] == False]
         }
 
     # old format, just an array of vulns
