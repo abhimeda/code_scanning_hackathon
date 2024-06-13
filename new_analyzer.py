@@ -68,7 +68,7 @@ def search_git_log(location: dict, code: dict):
                 temp["author"] = author
                 temp["email"] = email
             elif line.startswith("Date"):
-                date = line.removeprefix("Date").strip()
+                date = line.removeprefix("Date:").strip()
                 temp["date"] = date
             # check if all fields in temp are present; if so, assign info = temp
             if all(key in temp for key in ["sha", "author", "email", "date"]):
