@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     # get data 
-    file_path = 'authors.json'
+    file_path = 'output.json'
 
     # Open the file and load the data
     posts = []
